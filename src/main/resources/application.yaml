@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: "mongo-streaming"
+  data:
+    mongodb:
+      uri: ${MONGO_URI:mongodb://localhost:27017/mongo-streaming}
+
+mongo-streaming:
+  collection:
+    name: capped-collection
+    is-capped: true
+    size:
+      in-documents: 20
+      in-bytes: 1048576
+  service-collection:
+    name: service-info
+
+logging:
+  level:
+    org.springframework.web: INFO
+    com.alex.test: DEBUG
+
